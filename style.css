@@ -226,3 +226,20 @@ body {
         margin-bottom: 1rem;
     }
 }
+/* Auto-balancing columns for issues list */
+#issues-list {
+    column-count: 2;
+    column-gap: 2rem;
+    column-fill: balance; /* Ensures equal height columns */
+}
+
+.tutorial-item {
+    break-inside: avoid; /* Prevents items from splitting across columns */
+}
+
+/* Responsive: single column on smaller screens */
+@media (max-width: 768px) {
+    #issues-list {
+        column-count: 1;
+    }
+}
