@@ -1,0 +1,228 @@
+/* Basic Reset & Box Sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px; /* Base font size for rem units */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #e0e0e0; /* Light gray text for contrast */
+    min-height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    /* Gradient Black Background */
+    background: linear-gradient(to bottom right, #000000, #1a1a1a, #2b2b2b);
+    background-attachment: fixed; /* Ensures gradient covers full height even with short content */
+}
+
+/* Site Header Styling */
+.site-header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent background for header */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    position: relative; /* For absolute positioning of back button */
+}
+
+.site-header h1 {
+    font-size: 2.8rem;
+    color: #00bcd4; /* Cyan/Light Blue for main title */
+    margin-bottom: 0.5rem;
+    margin-left: 180px; /* Add left margin to avoid button */
+    margin-right: 180px; /* Keep it balanced */
+    font-weight: 700;
+}
+
+.site-header p {
+    font-size: 1.1rem;
+    color: #bbbbbb;
+}
+
+/* Back Button Styling */
+.back-button {
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #4CAF50; /* Green button */
+    color: white;
+    padding: 0.7rem 1.2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.back-button:hover {
+    background-color: #5cb85c;
+    transform: translateY(-50%) scale(1.05);
+}
+
+/* Main Container for Columns */
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Allows columns to wrap on smaller screens */
+    gap: 20px; /* Space between columns */
+    padding: 2rem;
+    max-width: 1000px; /* Max width for content */
+    margin: 2rem auto; /* Center the container with vertical margin */
+    background-color: rgba(0, 0, 0, 0.7); /* Slightly transparent dark background for content area */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    flex-grow: 1; /* Allows container to take up available space */
+}
+
+/* Column Styling (now only one column per page) */
+.column {
+    flex: 1; /* Allows column to grow and shrink */
+    min-width: 300px; /* Minimum width before wrapping */
+    background-color: rgba(255, 255, 255, 0.05); /* Very subtle light background for columns */
+    padding: 1.5rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.column h2 {
+    font-size: 2rem;
+    color: #4CAF50; /* Green for column titles */
+    margin-bottom: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid rgba(76, 175, 80, 0.3);
+    padding-bottom: 0.75rem;
+}
+
+/* Tutorial Item Styling */
+.tutorial-item {
+    background-color: rgba(0, 0, 0, 0.4); /* Darker background for each item */
+    padding: 1.2rem;
+    margin-bottom: 1.2rem;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tutorial-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+.tutorial-item h3 {
+    font-size: 1.4rem;
+    color: #fdd835; /* Yellow for issue/resolution titles */
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.tutorial-item p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #cccccc;
+}
+
+.tutorial-item ol {
+    margin-top: 0.8rem;
+    margin-left: 1.5rem;
+    color: #cccccc;
+}
+
+.tutorial-item ol li {
+    margin-bottom: 0.5rem;
+}
+
+/* Specific styling for links in tech issues */
+.tutorial-item a {
+    text-decoration: none;
+    color: inherit; /* Inherit color from parent for consistency */
+    display: block; /* Make the whole div clickable */
+}
+
+/* Ensure placeholder styling is less prominent */
+.tutorial-item.placeholder {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    text-align: center;
+    color: #999;
+}
+.tutorial-item.placeholder h3, .tutorial-item.placeholder p {
+    color: #999;
+}
+.tutorial-item.placeholder:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .site-header h1 {
+    font-size: 2.8rem;
+    color: #00bcd4;
+}
+
+    .site-header p {
+        font-size: 0.9rem;
+    }
+
+    .back-button {
+        position: static; /* Remove absolute positioning */
+        transform: none;
+        display: block;
+        margin: 1rem auto;
+        width: fit-content;
+    }
+
+    .container {
+        flex-direction: column; /* Stack columns vertically on smaller screens */
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    .column {
+        min-width: unset; /* Remove min-width when stacked */
+        width: 100%; /* Take full width */
+    }
+
+    .column h2 {
+        font-size: 1.8rem;
+    }
+
+    .tutorial-item h3 {
+        font-size: 1.2rem;
+    }
+
+    .tutorial-item p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-header {
+        padding: 1.5rem 0.5rem;
+    }
+
+    .site-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .container {
+        padding: 0.8rem;
+    }
+
+    .column {
+        padding: 1rem;
+    }
+
+    .tutorial-item {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+}
